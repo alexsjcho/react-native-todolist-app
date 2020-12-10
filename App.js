@@ -77,7 +77,7 @@ const App = () => {
       );
     } else {
       setItems((prevItems) => {
-        return [{id: uuid(), text}, ...prevItems];
+        return [{id: uniqueID(), text}, ...prevItems];
       });
     }
   };

@@ -1,13 +1,32 @@
 import React, {useState} from 'react';
-import {View, Text, StyleSheet, Image, Alert} from 'react-native';
+import {View, Text, StyleSheet, FlatList, Alert} from 'react-native';
+import Header from './components/Header';
 
 const App = () => {
+  const [items, setItems] = useState([
+    {
+      id: Date.now(),
+      text: 'Milk',
+    },
+    {
+      id: Date.now(),
+      text: 'Eggs',
+    },
+    {
+      id: Date.now(),
+      text: 'Bread',
+    },
+    {
+      id: Date.now(),
+      text: 'Juice',
+    },
+  ]);
   return (
     <View style={styles.container}>
-      <Text style={styles.text}> Hello World</Text>
-      <Image
-        source={{uri: 'https://randomuser.me/api/portraits/men/1.jpg'}}
-        style={styles.img}
+      <Header />
+      <FlatList
+        data={items}
+        renderItem={({item}) => <Text>{item.text}</Text>}
       />
     </View>
   );
@@ -16,14 +35,7 @@ const App = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  text: {color: 'darkslateblue', fontSize: 30},
-  img: {
-    width: 100,
-    height: 100,
-    borderRadius: 100 / 2,
+    paddingTop: 60,
   },
 });
 
